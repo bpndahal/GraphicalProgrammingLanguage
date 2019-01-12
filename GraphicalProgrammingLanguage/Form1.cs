@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GraphicalProgrammingLanguage
 {
-    public partial class Form1 : Form
+    public partial class GraphicsProgram : Form
     {
-        public Form1()
+        public GraphicsProgram()
         {
             InitializeComponent();
         }
