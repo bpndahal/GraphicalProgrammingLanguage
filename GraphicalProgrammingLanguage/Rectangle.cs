@@ -40,8 +40,17 @@ namespace GraphicalProgrammingLanguage
         /// <param name="g"></param>
         public void draw(Graphics g)
         {
-            Pen p = new Pen(Color.Black, 2);
-            g.DrawRectangle(p, x - (width / 2), y - (height / 2), width * 2, height * 2);
+            try
+            {
+                Pen p = new Pen(Color.Black, 2);
+                g.DrawRectangle(p, x - (width / 2), y - (height / 2), width * 2, height * 2);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
         /// <summary>
         /// this methods sets the values of x-axis, y-axis, width and height of 3drectamngle
@@ -49,10 +58,19 @@ namespace GraphicalProgrammingLanguage
         /// <param name="list">set parameter</param>
         public void set(params int[] list)
         {
-            this.x = list[0];
-            this.y = list[1];
-            this.width = list[2];
-            this.height = list[3];
+            try
+            {
+                this.x = list[0];
+                this.y = list[1];
+                this.width = list[2];
+                this.height = list[3];
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
     }
 }

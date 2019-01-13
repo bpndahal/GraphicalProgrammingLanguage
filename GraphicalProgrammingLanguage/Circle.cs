@@ -34,10 +34,20 @@ namespace GraphicalProgrammingLanguage
         /// <param name="g"> graphics parameter</param>
         public void draw(Graphics g)
         {
-            Pen p = new Pen(Color.Black, 2);
-            SolidBrush b = new SolidBrush(Color.Red);
-            //g.FillEllipse(b, x, y, radius * 2, radius * 2);
-            g.DrawEllipse(p, x - radius, y - radius, radius * 2, radius * 2);
+            try
+            {
+                Pen p = new Pen(Color.Black, 2);
+                SolidBrush b = new SolidBrush(Color.Red);
+                //g.FillEllipse(b, x, y, radius * 2, radius * 2);
+                g.DrawEllipse(p, x - radius, y - radius, radius * 2, radius * 2);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
         /// <summary>
         /// this methods sets the parameter of x-axis, y-axis and radius of a circle
@@ -45,9 +55,19 @@ namespace GraphicalProgrammingLanguage
         /// <param name="list"></param>
         public void set(params int[] list)
         {
-            this.x = list[0];
-            this.y = list[1];
-            this.radius = list[2];
+            try
+            {
+                this.x = list[0];
+                this.y = list[1];
+                this.radius = list[2];
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
     }
 }
