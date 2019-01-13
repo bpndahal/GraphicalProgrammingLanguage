@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtInputCode = new System.Windows.Forms.TextBox();
             this.btnUpload = new System.Windows.Forms.Button();
             this.btnRun = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlOutput = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtInputCode
             // 
-            this.textBox1.Location = new System.Drawing.Point(5, 4);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(605, 141);
-            this.textBox1.TabIndex = 0;
+            this.txtInputCode.Location = new System.Drawing.Point(5, 4);
+            this.txtInputCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtInputCode.Multiline = true;
+            this.txtInputCode.Name = "txtInputCode";
+            this.txtInputCode.Size = new System.Drawing.Size(605, 141);
+            this.txtInputCode.TabIndex = 0;
             // 
             // btnUpload
             // 
@@ -68,6 +68,7 @@
             this.btnRun.TabIndex = 2;
             this.btnRun.Text = "Run";
             this.btnRun.UseVisualStyleBackColor = false;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // btnSave
             // 
@@ -81,13 +82,13 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
             // 
-            // panel1
+            // pnlOutput
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Location = new System.Drawing.Point(4, 168);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(688, 345);
-            this.panel1.TabIndex = 4;
+            this.pnlOutput.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnlOutput.Location = new System.Drawing.Point(4, 168);
+            this.pnlOutput.Name = "pnlOutput";
+            this.pnlOutput.Size = new System.Drawing.Size(688, 345);
+            this.pnlOutput.TabIndex = 4;
             // 
             // label1
             // 
@@ -104,11 +105,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 517);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlOutput);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.btnUpload);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtInputCode);
             this.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "GraphicsProgram";
@@ -120,11 +121,11 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtInputCode;
         private System.Windows.Forms.Button btnUpload;
         private System.Windows.Forms.Button btnRun;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlOutput;
         private System.Windows.Forms.Label label1;
     }
 }
