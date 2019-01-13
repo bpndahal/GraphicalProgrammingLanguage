@@ -11,7 +11,7 @@ namespace GraphicalProgrammingLanguage
     /// </summary>
     public class Triangle: IShape
     {
-        int x, y, width, height;
+        public int x, y, width, height;
         /// <summary>
         /// width and height of triangle is decleared.
         /// </summary>
