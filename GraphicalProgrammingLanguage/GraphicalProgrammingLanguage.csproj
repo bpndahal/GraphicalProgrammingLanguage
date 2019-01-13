@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="3DRectangle.cs" />
     <Compile Include="Circle.cs" />
     <Compile Include="Creator.cs" />
     <Compile Include="FactoryClass.cs" />
@@ -84,6 +85,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WinFormsSyntaxHighlighter\WinFormsSyntaxHighlighter.csproj">
+      <Project>{a84b044a-f5dd-4220-baff-a18f17585e31}</Project>
+      <Name>WinFormsSyntaxHighlighter</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

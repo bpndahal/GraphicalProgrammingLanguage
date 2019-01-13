@@ -117,4 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>HINTS:
+// to move on x-axis and y-axis
+moveto 50,50
+
+//to draw an object
+circle 50
+rectangle 75,75
+triangle 100,100
+rectangle 100,100
+
+// looping a circle
+radius = 50
+loop 10
+circle radius
+radius + 10
+ if counter = 3 then radius + 20
+endloop
+
+</value>
+  </data>
 </root>

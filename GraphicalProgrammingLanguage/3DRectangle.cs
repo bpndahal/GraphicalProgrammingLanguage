@@ -1,41 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
 
 namespace GraphicalProgrammingLanguage
 {
     /// <summary>
-    /// this methods is decleared for rectangle class
+    /// this methods passes the values of 3DRectangle
     /// </summary>
-    public class Rectangle: IShape
+    public class _3DRectangle : IShape
     {
-        /// <summary>
-        /// this methods decleare the integer type for x-axis, y-axis, width and height for rectangle
-        /// </summary>
         public int x, y, width, height;
-        public Rectangle() : base()
+
+        /// <summary>
+        /// this methods passes the values of width and height
+        /// </summary>
+        public _3DRectangle() : base()
         {
             width = 0;
             height = 0;
         }
+
         /// <summary>
-        /// this methods passes the values of x-axis, y-axis, height and width of rectangle
+        /// thi methods passes the integer values of x-axis, y-axis, width and height of 3drectangle
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
-        public Rectangle(int x, int y, int width, int height)
+        /// <param name="x">x-axis</param>
+        /// <param name="y">y-axis</param>
+        /// <param name="width">width</param>
+        /// <param name="height">height</param>
+        public _3DRectangle(int x, int y, int width, int height)
         {
 
             this.width = width; //the only thingthat is different from shape
             this.height = height;
         }
+
         /// <summary>
-        /// this methods draw the rectangle
+        /// this method is used to draw the 3drectangle
         /// </summary>
         /// <param name="g"></param>
         public void draw(Graphics g)
@@ -46,7 +49,7 @@ namespace GraphicalProgrammingLanguage
         /// <summary>
         /// this methods sets the values of x-axis, y-axis, width and height of 3drectamngle
         /// </summary>
-        /// <param name="list">set parameter</param>
+        /// <param name="list"></param>
         public void set(params int[] list)
         {
             this.x = list[0];

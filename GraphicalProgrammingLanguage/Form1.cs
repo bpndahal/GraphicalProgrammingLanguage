@@ -3,90 +3,130 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsSyntaxHighlighter;
 
 namespace GraphicalProgrammingLanguage
 {
     public partial class GraphicsProgram : Form
     {
+        /// <summary>
+        /// this is the main program of graphical programming language.
+        /// </summary>
         public GraphicsProgram()
         {
             InitializeComponent();
+            var syntaxHighlighter = new SyntaxHighlighter(txtInputCode);
+            // multi-line comment
+            // keywords1
+            syntaxHighlighter.AddPattern(new PatternDefinition("circle", "triangle", "int", "var"), new SyntaxStyle(Color.Blue));
+            syntaxHighlighter.AddPattern(new PatternDefinition("rectangle", "3drectangle", "int", "var"), new SyntaxStyle(Color.Purple));
+            syntaxHighlighter.AddPattern(new PatternDefinition("loop", "endloop", "int", "var"), new SyntaxStyle(Color.Green));
+            syntaxHighlighter.AddPattern(new PatternDefinition("radius", "height", "width", "var"), new SyntaxStyle(Color.Maroon));
+            syntaxHighlighter.AddPattern(new PatternDefinition("counter"), new SyntaxStyle(Color.DarkOrange));
         }
 
         Creator factory = new FactoryClass();
         Pen myPen = new Pen(Color.Red);
         int x = 0, y = 0, width, height, radius, point, repeatval, counter;
+        /// <summary>
+        /// this methods saves the data intested on the rich text box to the destination folder.
+        /// </summary>
+        /// <param name="sender"> save parameter</param>
+        /// <param name="e"></param>
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "TXT files (*.txt)|*.txt|All files (*.*)|*.*";
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                StreamWriter write = new StreamWriter(File.Create(save.FileName));
+                write.WriteLine(txtInputCode.Text);
+                write.Close();
+                MessageBox.Show("File Saved Successfully");
+            }
+        }
+        /// <summary>
+        /// this mehods uploads or browse the text file from the destination folder and execute the commands to the rich text box.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            Stream myStream = null;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.Title = "Browse file from specified folder";
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Filter = "TXT files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog1.Filter = "DOCX files (*.docx)|*.docx|All files (*.*)|*.*";
+
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+            //Browse .txt file from computer
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if ((myStream = openFileDialog1.OpenFile()) != null)
+                    {
+                        using (myStream)
+                        {                         // Insert code to read the stream here.
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+
+                //displays the text inside the file on TextBox named as txtInput
+                txtInputCode.Text = File.ReadAllText(openFileDialog1.FileName);
+
+            }
+        }
+
         int loop = 0, kStart = 0, ifcounter = 0;
         private bool loopcheck;
+        /// <summary>
+        /// this methods moves the x-axis points and y-axis points
+        /// </summary>
+        /// <param name="toX">x-axis</param>
+        /// <param name="toY">y-axis</param>
         public void moveTo(int toX, int toY)
         {
             x = toX;
             y = toY;
         }
-
+        /// <summary>
+        /// this methods draws an ojects on the x-asis and y-axis.
+        /// </summary>
+        /// <param name="toX">x-axis</param>
+        /// <param name="toY">Y-axis</param>
         public void drawTo(int toX, int toY)
         {
             x = toX;
             y = toY;
         }
-        public int getX()
-        {
-            return x;
-        }
-
-
-        public int getY()
-        {
-            return y;
-        }
-
-        public void drawLine(int toX, int toY)
-        {
-            Graphics g = pnlOutput.CreateGraphics();
-            g.DrawLine(myPen, x, y, toX, toY);
-            moveTo(toX, toY);
-        }
-
-        public void drawRectangle(int width, int height)
-        {
-            Graphics g = pnlOutput.CreateGraphics();
-            g.DrawRectangle(myPen, x - width, y - height, width * 2, height * 2);
-
-        }
-
-        public void drawCircle(int radius)
-        {
-            Graphics g = pnlOutput.CreateGraphics();
-            Rectangle rect = new Rectangle(x - radius, y - radius, radius * 2, radius * 2);
-            g.DrawEllipse(myPen, rect);
-        }
-        public void drawTriangle(int width, int height)
-        {
-            Graphics g = pnlOutput.CreateGraphics();
-            Point[] p = new Point[3];
-            p[0].X = x;
-            p[0].Y = y - (height / 2);
-
-            p[1].X = x - (width / 2);
-            p[1].Y = y + (height / 2);
-
-            p[2].X = x + (width / 2);
-            p[2].Y = y + (height / 2);
-
-            g.DrawPolygon(myPen, p);
-        }
+        
+        /// <summary>
+        /// this methods executes the commands as input by the user.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRun_Click(object sender, EventArgs e)
         {
             Graphics g = pnlOutput.CreateGraphics();
 
 
 
-            string command = txtInput.Text.ToLower();
-            string[] commandline = command.Split(new String[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            string command = txtInputCode.Text.ToLower();
+            string[] commandline = command.Split(new String[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
             for (int k = 0; k < commandline.Length; k++)
             {

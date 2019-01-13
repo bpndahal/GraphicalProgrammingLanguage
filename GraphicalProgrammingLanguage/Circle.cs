@@ -7,26 +7,42 @@ using System.Drawing;
 
 namespace GraphicalProgrammingLanguage
 {
+    /// <summary>
+    /// this methods is used for delearing circle class
+    /// </summary>
     public class Circle: IShape
     {
-        int x, y, radius;
+        public int x, y, radius;
         public Circle() : base()
         {
 
         }
+        /// <summary>
+        /// this methods calls the values of circle for x-axis, y-axis and radius
+        /// </summary>
+        /// <param name="x">x-axis</param>
+        /// <param name="y">y-axis</param>
+        /// <param name="radius">radius of a circle</param>
         public Circle(int x, int y, int radius)
         {
 
             this.radius = radius; //the only thingthat is different from shape
         }
+        /// <summary>
+        /// this methods draw the circle.
+        /// </summary>
+        /// <param name="g"> graphics parameter</param>
         public void draw(Graphics g)
         {
             Pen p = new Pen(Color.Black, 2);
             SolidBrush b = new SolidBrush(Color.Red);
-            g.FillEllipse(b, x, y, radius * 2, radius * 2);
-            g.DrawEllipse(p, x, y, radius * 2, radius * 2);
+            //g.FillEllipse(b, x, y, radius * 2, radius * 2);
+            g.DrawEllipse(p, x - radius, y - radius, radius * 2, radius * 2);
         }
-
+        /// <summary>
+        /// this methods sets the parameter of x-axis, y-axis and radius of a circle
+        /// </summary>
+        /// <param name="list"></param>
         public void set(params int[] list)
         {
             this.x = list[0];
